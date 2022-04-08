@@ -1,0 +1,50 @@
+{% extends "Base.html"%} {% block content %}
+<div class="container container">
+  <div class="row">
+    <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+      <form action="/dashboard" method="post">
+        <table>
+          <tr>
+            <td>Name</td>
+            <td><input type="text" name="name" class="form-control" /></td>
+          </tr>
+          <tr>
+            <td>Mobile No.</td>
+            <td><input type="text" name="mno" class="form-control" /></td>
+          </tr>
+          <tr>
+            <td>Age</td>
+            <td><input type="text" name="age" class="form-control" /></td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>
+              <textarea class="form-control" name="address" rows="3"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>DOB</td>
+            <td><input type="date" name="dob" class="form-control" /></td>
+          </tr>
+          <tr>
+            <td>Place</td>
+            <td><input type="text" name="place" class="form-control" /></td>
+          </tr>
+          <tr>
+            <td>Pincode</td>
+            <td><input type="text" name="pincode" class="form-control" /></td>
+          </tr>
+          <br />
+
+          <tr>
+            <td></td>
+            <td>
+              <button class="btn btn-warning" type="submit">REGISTER</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

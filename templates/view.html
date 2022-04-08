@@ -1,0 +1,38 @@
+{% extends "Base.html"%}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NAME</th>
+                        <th scope="col">PHONE NO.</th>
+                        <th scope="col">AGE</th>
+                        <th scope="col">ADDRESS</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">PLACE</th>
+                        <th scope="col">PINCODE</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     {% for row in patients %}
+                        <tr>
+                            <th scope="row">{{row[0] }}</th>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                            <td>{{ row[4] }}</td>
+                            <td>{{ row[5] }}</td>
+                            <td>{{ row[6] }}</td>
+                            <td>{{ row[7] }}</td>
+                        </tr>
+                     {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}
