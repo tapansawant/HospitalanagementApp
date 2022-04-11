@@ -18,4 +18,50 @@
             </div>
         </div>   
     </div>
+{% if status %}
+               <form action="/viewupdate" method='post'>
+                <table class="table table-hover">
+                  {% for i in patients %}
+                    <tr>
+                      <td >Patient Name</td>
+                        <td>  <input  name="Name" class="form-control"  value={{ i[1] }} type="text">  </td>
+                    </tr>
+                    <tr>
+                        <td >Phone Number</td>  <td>
+                        <input name="mno" class="form-control"  value={{ i[2] }} type="text" readonly>  </td>
+                    </tr>
+                     <tr>
+                         <td >Age</td>
+                         <td>  <input name="age" class="form-control" value={{ i[3] }} type="text">  </td>
+                     </tr>
+                     <tr>
+                         <td >Addres</td>
+                         <td>  <input name="address" class="form-control" value={{ i[4] }} type="text">  </td>
+                     </tr>
+                     <tr>
+                         <td >Date of Birth</td>
+                         <td>  <input name="dob"  class="form-control" value={{ i[5] }} type="text">  </td>
+                     </tr>
+                      <tr>
+                          <td >Place</td>
+                          <td>  <input name="place"  class="form-control" value={{ i[6] }} type="text">  </td>
+                      </tr>
+                      <tr>
+                          <td >Pincode</td>
+                          <td>  <input name="pincode" class="form-control"  value={{ i[7] }} type="text">  </td>  </tr>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <td>   <button  type="submit" class="btn btn-primary">  UPDATE </button>  </td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </form>
+          </div>
+        </div>
+      </div>
+{% endif %}
+{% endblock %}
 {% endblock %}

@@ -149,16 +149,16 @@ def update():
                 print("Invalid PHONE number")
             else:
                 print(len(result))
-            return redirect("/viewupdate")
+            return render_template("update.html", patients=result, status=True)
 
         except Exception as e:
             print(e)
 
-    return render_template("update.html", phone=getPhone)
+    return render_template("update.html")
 
 
 @app.route("/viewupdate", methods=['GET', 'POST'])
-def viewupdate(phone):
+def viewupdate():
     if request.method == "POST":
         getName = request.form["name"]
         getPhone = request.form["mno"]
@@ -168,7 +168,7 @@ def viewupdate(phone):
         getPlace = request.form["place"]
         getPincode = request.form["pincode"]
     try:
-        data = (getName, getAge, getAddress, getDob, getPlace, getPincode, phone)
+        data = (getName, getAge, getAddress, getDob, getPlace, getPincode, getPhone)
         insert_query = '''UPDATE PATIENT SET NAME = ?,AGE=?,ADDRESS=?,DOB=?,PLACE=?,PINCODE=?
                            where PHONE = ?'''
 
@@ -179,8 +179,57 @@ def viewupdate(phone):
     except Exception as e:
         print(e)
 
-    return render_template("/update-form.html")
+    return render_template("update.html", patients=result, status=True)
 
+
+# def update():
+#     if request.method == "POST":
+#         getMobilno = request.form["mobno"]
+#         print(getMobilno)
+#         try:
+#             curr.execute("SELECT* FROM PATIENTSDETAILS WHERE Mobilenumber=" + getMobilno)
+#             print("SUCCESSFULLY SELECTED!")
+#             result = curr.fetchall()
+#             if len(result) == 0:
+#                 print("Invalid Mobile Number")
+#             else:
+#                 print(result)
+#                 return redirect("/viewupdate")
+#         except Exception as e:
+#             print(e)
+#
+#     return flask.render_template("update.html")
+#
+#
+# @app.route("/viewupdate", methods=['GET', 'POST'])
+# def viewupdate():
+#     if request.method == "POST":
+#         getName = request.form["Name"]
+#         getMobilno = request.form["mobno"]
+#         getAge = request.form["age"]
+#         getAddress = request.form["addr"]
+#         getDob = request.form["DOB"]
+#         getPlace = request.form["place"]
+#         getPincode = request.form["pincd"]
+#
+#         print(getName)
+#         print(getMobilno)
+#         print(getAge)
+#         print(getAddress)
+#         print(getDob)
+#         print(getPlace)
+#         print(getPincode)
+#         try:
+#             query = "UPDATE PATIENTSDETAILS SET Name='" + getName + "',Mobilenumber=" + getMobilno + ",Age=" + getAge + ",Address='" + getAddress + "',Dob=" + getDob + ",Place='" + getPlace + "',Pincode=" + getPincode + " WHERE Mobilenumber=" + getMobilno
+#             print(query)
+#             curr.execute(query)
+#             print("SUCCESFULLY UPDATED!")
+#             con.commit()
+#             return redirect('/Viewall')
+#         except Exception as e:
+#             print(e)
+#     return flask.render_template("viewupdate.html")
+#
 
 @app.route("/view")
 def View():
